@@ -77,6 +77,10 @@ static const char *dmenucmd[] = {"dmenu_run",    "-fn", dmenufont,   "-nb",
                                  selbordercolor, "-sf", selfgcolor,  NULL};
 static const char *termcmd[] = {"wezterm", NULL};
 
+static const char *togglespotify[] = {"playerctl", "-p", "spotify", "play-pause", NULL};
+static const char *nextspotify[] = {"playerctl", "-p", "spotify", "next", NULL};
+static const char *previousspotify[] = {"playerctl", "-p", "spotify", "previous", NULL};
+
 static const char *mutecmd[] = {"pactl", "set-sink-mute", "0", "toggle", NULL};
 static const char *volupcmd[] = {"pactl", "set-sink-volume", "0", "+5%", NULL};
 static const char *voldowncmd[] = {"pactl", "set-sink-volume", "0", "-5%",
@@ -89,6 +93,9 @@ static const char *brdowncmd[] = {"brightnessctl", "set", "-5%", NULL};
 static Key keys[] = {
 
     {0, XF86XK_AudioMute, spawn, {.v = mutecmd}},
+    {MODKEY|ControlMask, XK_t, spawn, {.v = togglespotify}},
+    {MODKEY|ControlMask, XK_n, spawn, {.v = nextspotify}},
+    {MODKEY|ControlMask, XK_p, spawn, {.v = previousspotify}},
     {0, XF86XK_AudioLowerVolume, spawn, {.v = voldowncmd}},
     {0, XF86XK_AudioRaiseVolume, spawn, {.v = volupcmd}},
     {0, XF86XK_MonBrightnessUp, spawn, {.v = brupcmd}},
