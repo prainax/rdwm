@@ -2,12 +2,12 @@
 
 /* appearance */
 static const unsigned int borderpx = 2; /* border pixel of windows */
-static const unsigned int gappx = 5;    /* gaps between windows */
+static const unsigned int gappx = 3;    /* gaps between windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const int swallowfloating =
     0;                        /* 1 means swallow floating windows by default */
 static const int showbar = 1; /* 0 means no bar */
-static const int topbar = 1;  /* 0 means bottom bar */
+static const int topbar = 0;  /* 0 means bottom bar */
 static const char *fonts[] = {
     "FantasqueSansMono:size=10:antialias=true:autohint=true",
     "JoyPixels:pixelsize=11:antialias=true:autohint=true"};
@@ -75,7 +75,9 @@ static char dmenumon[2] =
 static const char *dmenucmd[] = {"dmenu_run",    "-fn", dmenufont,   "-nb",
                                  normbgcolor,    "-nf", normfgcolor, "-sb",
                                  selbordercolor, "-sf", selfgcolor,  NULL};
-static const char *termcmd[] = {"wezterm", NULL};
+
+
+static const char *termcmd[] = {"kitty", NULL};
 
 static const char *togglespotify[] = {"playerctl", "-p", "spotify", "play-pause", NULL};
 static const char *nextspotify[] = {"playerctl", "-p", "spotify", "next", NULL};
@@ -109,14 +111,14 @@ static Key keys[] = {
     {MODKEY, XK_f, zoom, {0}},
     {MODKEY, XK_p, incnmaster, {.i = -1}},
     {MODKEY, XK_s, incnmaster, {.i = +1}},
-    {MODKEY | ShiftMask, XK_c, killclient, {0}},
+    {MODKEY, XK_c, killclient, {0}},
     {MODKEY, XK_w, setlayout, {.v = &layouts[0]}},
     {MODKEY, XK_e, setlayout, {.v = &layouts[1]}},
     {MODKEY, XK_r, setlayout, {.v = &layouts[2]}},
     {MODKEY | ShiftMask, XK_r, togglefloating, {0}},
     {MODKEY, XK_t, setlayout, {0}},
     {MODKEY, XK_d, spawn, {.v = dmenucmd}},
-    {MODKEY, XK_Return, spawn, {.v = termcmd}},
+    {MODKEY, XK_q, spawn, {.v = termcmd}},
     {MODKEY, XK_Tab, view, {0}},
     {MODKEY, XK_0, view, {.ui = ~0}},
     {MODKEY | ShiftMask, XK_0, tag, {.ui = ~0}},
